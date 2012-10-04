@@ -29,7 +29,7 @@ options {
 
 
 PARSER_BEGIN(Java15Parser)
-package tmp.generated_java15;
+package tmp.generated_java15java15_withDeepMethods;
 
 import java.io.*;
 import java.util.*;
