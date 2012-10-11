@@ -526,7 +526,7 @@ ArrayInitializerInternal:
 VariableInitializer ( LOOK_AHEAD(2) "," VariableInitializer )*;
 
 
-@FSTExportName("{MethodDeclarator}")
+@FSTNonTerminal("{MethodDeclarator}")
 MethodDeclaration:
   [ TypeParameters ]
   ResultType
@@ -534,9 +534,9 @@ MethodDeclaration:
   MethodDeclarationBody
 ;
 
- @FSTTerminal(name="{AUTO}")
-  LOOK_AHEAD(2)
-  MethodDeclarationBody: (Statement)* | ";"<NONE>; 
+@FSTNonTerminal(name="{AUTO}")
+  //LOOK_AHEAD(2)
+  MethodDeclarationBody: Block | ";"<NONE>; 
 
 @FSTExportName("{<IDENTIFIER>}({FormalParameters})")
 MethodDeclarator:
@@ -968,7 +968,8 @@ LabeledStatement:
   <IDENTIFIER> ":" Statement
 ;
 
-Block:
+@FSTNonTerminal(name="{Block}")
+  Block:
   "{" @+  @! ( BlockStatement )* @- "}" @!
 ;
 
